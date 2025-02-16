@@ -1,0 +1,8 @@
+bun webNovelScraper.ts add --title "Reinventing the Wheel" --address "https://forums.spacebattles.com/threads/reinventing-the-wheel-an-asoiaf-uplift-si.1144408/" --tag ".collapseTrigger"
+
+bun webNovelScraper.ts add --title "A Gamer's Guide to Witchcraft and Wizardry" --address "https://forums.spacebattles.com/threads/a-gamers-guide-to-witchcraft-and-wizardry-hp-oc-si.1211282/" --tag ".collapseTrigger"
+
+bun webNovelScraper.ts add --title "Ten Shadows in the Heian Era" --address "https://forums.spacebattles.com/threads/ten-shadows-in-the-heian-era.1195457/" --tag ".collapseTrigger"
+
+bun webNovelScraper.ts add --title "I Am This Murim’s Crazy B*tch" --address "https://genesistudio.com/novels/mcb" --tag "h3.font-medium"
+
