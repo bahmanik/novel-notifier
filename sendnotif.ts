@@ -9,5 +9,6 @@ type novelT = {
 type sendNotifT = (webNovel: novelT) => void
 
 export const sendNotif: sendNotifT = (webNovel) => {
-	execSync(`dunstify -A "${webNovel.url}","open chapter" "${webNovel.title}" "\nNew Chapter of ${webNovel.title}" | xargs firefox&`)
+	console.log(`dunstify -A "${webNovel.url}","open chapter" "${webNovel.title}" "\nNew Chapter of ${webNovel.title}" -i ${webNovel.img} | xargs firefox&`)
+	execSync(`dunstify -A "${webNovel.url}","open chapter" "${webNovel.title}" "\nNew Chapter of ${webNovel.title}" -i ${webNovel.img} | xargs firefox&`)
 }

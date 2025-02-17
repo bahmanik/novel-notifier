@@ -4,5 +4,5 @@ bun webNovelScraper.ts add --title "A Gamer's Guide to Witchcraft and Wizardry" 
 
 bun webNovelScraper.ts add --title "Ten Shadows in the Heian Era" --address "https://forums.spacebattles.com/threads/ten-shadows-in-the-heian-era.1195457/" --tag ".collapseTrigger"
 
-bun webNovelScraper.ts add --title "I Am This Murim’s Crazy B*tch" --address "https://genesistudio.com/novels/mcb" --tag "h3.font-medium"
+bun webNovelScraper.ts add --title "I Am This Murim’s Crazy Bitch" --address "https://genesistudio.com/novels/mcb" --tag "h3.font-medium"
 

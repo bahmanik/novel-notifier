@@ -1,6 +1,8 @@
 import { readFileSync, writeFileSync } from "fs"
+import { execSync } from "child_process"
 import { sendNotif } from './sendnotif'
 import { createHash } from "crypto"
+import { resolve } from "path"
 import { JSDOM } from "jsdom"
 import get from "axios"
 
@@ -10,22 +12,37 @@ const compareArr = (arr1: Array<string>, arr2: Array<string>) => arr1.length ===
 const checkObject = (obj: object) => Object.keys(obj).length === 0 && obj.constructor === Object
 const generateHash = (content: string) => createHash("md5").update(content).digest("hex")
 
-const cash = "cash.json"
+const cash = resolve(__dirname, "./cash.json")
 const lngf = Object.keys(args).length
 const title = args.title
 const address = args.address || args.a
 const htmlTag = args.tag || args.t
-const image = args.img || args.i
+let image = args.img || args.i
 
 if (compareArr(args._, ["add"]) && address && htmlTag && title) {
 	const hash = await getElementHash(address, htmlTag)
+
+	if (image) {
+		try {
+			const imgSplit: Array<string> = image.split("/")
+			const imageName = imgSplit[imgSplit.length - 1]
+			const newPath = resolve(__dirname, `./icon/${imageName}`)
+			execSync(`cp ${image} ${newPath}`)
+			image = newPath
+		}
+		catch (error) {
+			throw error;
+		}
+	}
+
+
 	const temp = {
 		[address]: {
 			title: title,
 			url: address,
 			tag: htmlTag,
 			hash: hash,
-			img: image
+			img: `${image} `
 		}
 	}
 
@@ -44,7 +61,7 @@ else if (compareArr(args._, ["remove"]) && lngf == 2) {
 	try {
 		const jsonData = JSON.parse(readFileSync(cash))
 		const novelLs = Object.keys(jsonData)
-		novelLs.map((e, i) => { console.log(`${i + 1}: ${jsonData[e].title}`) })
+		novelLs.map((e, i) => { console.log(`${i + 1}: ${jsonData[e].title} `) })
 
 		const temp = Number(prompt("\n select a novel to delete: "))
 		if (!(0 < temp && temp <= novelLs.length)) {
